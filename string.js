@@ -132,3 +132,17 @@ function minusSeven(num) {
     ;
 }
 minusSeven(20)
+
+// Understanding Undefined Value Returned Form a Function
+// Assignment with a return Value
+ var sum = 0;
+ function addThree(){
+     sum = sum + 4;
+     console.log(sum + " is the sum");
+ }
+  function addfive(num){
+      return (num + sum) / 2;
+  }
+   console.log(addfive(50));
+   sum = addfive(10);
+   addThree();
