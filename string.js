@@ -123,3 +123,12 @@ function myOutfit() {
     return outerWear;
 }
 console.log(myOutfit());
+
+//  return a value form a function with return
+
+function minusSeven(num) {
+    num+= - 7;
+    return console.log(num);
+    ;
+}
+minusSeven(20)
