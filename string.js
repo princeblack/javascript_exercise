@@ -103,7 +103,14 @@ function fun2() {
     if (typeof oopsGlobal != "undefined") {
         output += "oopsGlobal: " + oopsGlobal;
     }
-    console.log(output);
-    
+    console.log(output); 
 }
 fun2()
+
+// Local Scope and Function
+
+function myLocalScope() {
+    var myVar = "je suis le boss"
+    console.log(myVar);
+}
+myLocalScope()
