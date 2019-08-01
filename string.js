@@ -114,3 +114,12 @@ function myLocalScope() {
     console.log(myVar);
 }
 myLocalScope()
+
+// Global vs  Local Scope in Function
+var outerWear = "sleep";
+
+function myOutfit() {
+    let outerWear = "string"
+    return outerWear;
+}
+console.log(myOutfit());
