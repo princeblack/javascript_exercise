@@ -89,6 +89,21 @@ console.log(myList);
 // write Reusable Code with Functions
 function functionWithArgs(a, b) {
     console.log(a * b);
-    
 }
 functionWithArgs(415,25)
+
+// global Scope and Functions
+let myGlobal = 20;
+let oopsGlobal = 10;
+function fun2() {
+    var output = "";
+    if (typeof myGlobal != "undefined") {
+        output += "myGlobal :" + myGlobal + " ";
+    }
+    if (typeof oopsGlobal != "undefined") {
+        output += "oopsGlobal: " + oopsGlobal;
+    }
+    console.log(output);
+    
+}
+fun2()
