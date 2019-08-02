@@ -157,3 +157,9 @@ function nextInLine(arr, item){
   console.log("==============");
   console.log(nextInLine(testArr,6));
   console.log("After: " + JSON.stringify(testArr));
+
+//   Boolean Values
+function welcomeToBooleans(){
+    return true;
+}
+console.log(welcomeToBooleans());
