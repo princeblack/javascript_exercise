@@ -168,9 +168,35 @@ console.log(welcomeToBooleans());
 function trueOrFalse(wasThatTrue) {
     if (wasThatTrue) {
         return "yes that was True";
-        
     }
     return "false, it's not True";
-    
 }
 console.log(trueOrFalse());
+
+// Comparison with the Equality Operator
+function testEqual(val) {
+    if (val == 10) {
+        return "Equal";
+    }
+    return "Not Equal";
+}
+console.log(testEqual(10));
+
+// Comparison with the Strict Equality Operator
+function testStrict(val) {
+    if (val === 10) {
+        return "Equal";
+    }
+    return "Not Equal";
+}
+console.log(testStrict("10"));
+
+// Pratice comparing Differenct values
+
+function compareEquality(a,b) {
+    if (a === b) {
+        return "Equal";
+    }
+    return "Not Equal";
+}
+console.log(compareEquality(10,"10"));
