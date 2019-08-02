@@ -200,3 +200,21 @@ function compareEquality(a,b) {
     return "Not Equal";
 }
 console.log(compareEquality(10,"10"));
+
+// Comparison with the Inequality Operator
+function testNotEqual(a) {
+    if (a != 9) {
+        return "Not Equal";
+    }
+    return " Equal";
+}
+console.log(testNotEqual("9"));
+
+// Comparison with the Strict Inequality Operator
+function testStrictNotEqual(a) {
+    if (a !== 91) {
+        return "Not Equal";
+    }
+    return " Equal";
+}
+console.log(testStrictNotEqual(91));
