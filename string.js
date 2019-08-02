@@ -163,3 +163,14 @@ function welcomeToBooleans(){
     return true;
 }
 console.log(welcomeToBooleans());
+ 
+// Use Conditional Logic With If Statements
+function trueOrFalse(wasThatTrue) {
+    if (wasThatTrue) {
+        return "yes that was True";
+        
+    }
+    return "false, it's not True";
+    
+}
+console.log(trueOrFalse());
