@@ -263,3 +263,31 @@ function caseInSwitch(val) {
     }
 }
 console.log(caseInSwitch(2));
+
+// Multiple Identical Operations in Switch Statements
+function sequentialSizes(val){
+    var answer = "";
+    switch (val) {
+        case 1:
+        case 2:
+        case 3:
+            answer = "lower";
+            break;
+        case 4:
+        case 5:
+        case 6:
+            answer = "Mid";
+            break;
+        case 7:
+        case 8:
+        case 9:
+            answer = "High";
+            break;
+        default:
+            answer = "i don't what you mean"
+            break;
+    }
+
+    return answer;
+}
+console.log(sequentialSizes(10));
