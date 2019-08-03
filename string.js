@@ -291,3 +291,9 @@ function sequentialSizes(val){
     return answer;
 }
 console.log(sequentialSizes(10));
+
+// Returning boolean Values from Functions
+function isLess(a, b){
+    return a < b ;
+}
+console.log(isLess(30, 20));
