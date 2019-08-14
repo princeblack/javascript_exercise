@@ -297,3 +297,20 @@ function isLess(a, b){
     return a < b ;
 }
 console.log(isLess(30, 20));
+
+// Returning Early Pattern from Function
+
+function abTest(a, b){
+
+    return Math.round(Math.pow(Math.sqrt(a) + Math.sqrt(b),3)) + " this one";
+}
+console.log(abTest(2,2));
+
+
+console.log(Math.sqrt(4));
+console.log(Math.pow(2, 3));
+console.log("================================");
+
+console.log(4-4*7+3);
+console.log(4*2*4/4*4);
+
