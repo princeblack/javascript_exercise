@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://momentjs.com/downloads/moment-with-locales.min.js"></script>
+</head>
+<body>
+    <p id="nowDate"></p>
+    <p id="realDate"></p>
+    <p id="moment"></p>
+    <script>
+        let theMoment = moment().format('LTS')
+
+        document.getElementById("moment").innerHTML = theMoment;
+        
+        let newDate = new Date("1991-09-26").getFullYear()
+
+        document.getElementById("realDate").innerHTML =newDate;
+
+
+        let date = new Date().getFullYear() - newDate;
+        document.getElementById("nowDate").innerHTML =date;
+    </script>
+
+    
+</body>
+</html>
