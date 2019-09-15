@@ -84,9 +84,19 @@ checkEquals([1, 12], [11, 2])
 
 function Book(Title, Author) {
     this.title = Title;
-    this.author = Author
-    return 
+    this.author = Author;
+    this.getTitle =()=>{
+      return `${this.title}`;
+    };
+    this.getAuthor =()=>{
+      return `${this.author}`
+    }
+    
 }
-const PP = new Book();
-const H = new Book();
-const WP = new Book();
+const PP = new Book('Pride and Prejudice','Jane Austen');
+const H = new Book('Hamlet','Hamlet');
+const WP = new Book('War and Peace',' Leo Tolstoy');
+
+console.log(PP.title);
+
+
