@@ -82,21 +82,52 @@ checkEquals([1, 12], [11, 2])
 // Hamlet - William Shakespeare (H)
 // War and Peace - Leo Tolstoy (WP)
 
-function Book(Title, Author) {
-    this.title = Title;
-    this.author = Author;
+function Book(title, author) {
+    this.title = title;
+    this.author = author;
     this.getTitle =()=>{
-      return `${this.title}`;
+      return `Title: ${this.title}`;
     };
     this.getAuthor =()=>{
-      return `${this.author}`
+      return `Author: ${this.author}`
     }
     
 }
 const PP = new Book('Pride and Prejudice','Jane Austen');
-const H = new Book('Hamlet','Hamlet');
+const H = new Book('Hamlet','William Shakespeare');
 const WP = new Book('War and Peace',' Leo Tolstoy');
 
-console.log(PP.title);
 
+// You're in the midst of creating a typing game.
 
+// Create a function that takes in two arrays: the array of user-typed words, and the array of correctly-typed words and outputs an array containing 1s (correctly-typed words) and -1s (incorrectly-typed words).
+
+// Inputs:
+// User-typed Array: ["cat", "blue", "skt", "umbrells", "paddy"]
+// Correct Array: ["cat", "blue", "sky", "umbrella", "paddy"]
+
+// Output: [1, 1, -1, -1, 1]
+
+function correctStream(user, correct) {
+  let res = [];
+  user.map((x )=>{
+    if (correct.indexOf(x) > -1) {
+      res.push(1)
+    }else{
+      res.push(-1)
+    }
+
+  })
+
+  
+
+      
+   
+  console.log(res);
+  
+}
+
+correctStream(
+  ["it", "is", "find"],
+  ["it", "is", "fine"]
+) //➞ [1, 1, -1]
