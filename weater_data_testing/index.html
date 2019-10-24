@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>BERLIN WEATER</title>
+    <title>World City Weather</title>
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
     <link rel="stylesheet" href="css/main.css">
 </head>
@@ -14,7 +14,7 @@
     </div>
     <div id="cityInfo"class="item2" >
         <p id="city"></p>
-        <p id="date"></p>
+        <p id="country"></p>
     </div>
     <div id="weatherInfo" class="item3">
         <p id="temp"></p>
@@ -25,13 +25,10 @@
     </div>
     <div class="item4" >
             <img src="" alt="" id="icon"class="item" >
-            <div>
-                WIND
-                <div>
-                    <p id="speed"></p>
-                    <p id="deg"></p>
-                </div>
-            </div>
+            <p id="wind"></p>
+            <p id="speed"></p>
+            <p id="deg"></p>
+
     </div>
 </div>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
