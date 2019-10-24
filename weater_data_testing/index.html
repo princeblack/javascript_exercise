@@ -4,13 +4,32 @@
     <meta charset="UTF-8">
     <title>BERLIN WEATER</title>
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
-<div class="weather-container">
-    <img src="" alt="" class="icon">
-    <p class="weater"></p>
-    <p class="temp"></p>
+<div id="weather-container">
+    <div id="search_container"  class="item1">
+        <input type="text" id="search"  placeholder=" City Name"><br>
+        <button type="submit" id="submit">search</button>
+    </div>
+    <div id="cityInfo"class="item2" >
+        <p id="city"></p>
+        <p id="date"></p>
+    </div>
+    <div id="weatherInfo" class="item3">
+        <p id="temp"></p>
+        <p id="description"></p>
+        <p id="humidity"></p>
+        <p id="temp_min"></p>
+        <p id="temp_max"></p>
+    </div>
+    <div class="item4" >
+            <img src="" alt="" id="icon"class="item" >
+            <p id="speed"></p>
+            <p id="deg"></p>
+    </div>
 </div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="main.js"></script>
 </body>
 </html>
