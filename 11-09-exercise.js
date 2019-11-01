@@ -116,15 +116,8 @@ function correctStream(user, correct) {
     }else{
       res.push(-1)
     }
-
-  })
-
-  
-
-      
-   
-  console.log(res);
-  
+  })  
+  return res
 }
 
 correctStream(
