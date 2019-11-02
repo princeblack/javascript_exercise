@@ -3,7 +3,6 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   display: -webkit-box;
@@ -27,15 +26,15 @@ body {
 
 #weather-container {
   width: 100%;
-  background: -webkit-gradient(linear, left top, right top, from(rgba(122, 160, 122, 0.796)), to(rgba(255, 227, 201, 0.792)));
-  background: linear-gradient(to right, rgba(122, 160, 122, 0.796), rgba(255, 227, 201, 0.792));
+  background: -webkit-gradient(linear, left top, right top, from(rgba(122, 160, 122, 0.796)), to(#f5bc87));
+  background: linear-gradient(to right, rgba(122, 160, 122, 0.796), #f5bc87);
   border: 2px solid #8186c070;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 100 1fr 1fr 1fr 1fr;
-      grid-template-columns: 100 1fr 1fr 1fr 1fr;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
 }
 
 #weather-container .item1 {
@@ -61,11 +60,15 @@ body {
 }
 
 #weather-container .item3 {
-  grid-column-end: 1.5;
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 1;
+  text-align: center;
+  margin-top: 30px;
 }
 
 #weather-container .item3 #temp {
-  font-size: 30px;
+  font-size: 40px;
   color: aliceblue;
 }
 
@@ -81,13 +84,17 @@ body {
 }
 
 #weather-container .item4 {
-  grid-column-end: 3;
+  -ms-grid-column: 2;
+      grid-column-start: 2;
+  grid-column-end: 2;
+  text-align: left;
 }
 
 #weather-container .item4 #wind {
   text-decoration: underline;
-  font-size: 20px;
+  font-size: 30px;
   margin-bottom: 10px;
+  color: linear-gradient(to right, rgba(226, 21, 21, 0.796), rgba(226, 181, 144, 0.792));
   color: aliceblue;
 }
 
@@ -96,18 +103,26 @@ body {
   padding: 0;
 }
 
+#search_container {
+  text-align: center;
+}
+
 #search_container #search, #search_container #submit {
   margin: 0px;
   padding: 0px;
 }
 
 #search_container #search {
-  width: 100%;
-  height: 30px;
+  width: 80%;
+  height: 50px;
   border-width: 0px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  text-align: center;
 }
 
 #search_container #submit {
-  width: 100%;
+  width: 80%;
+  height: 30px;
 }
 /*# sourceMappingURL=style.css.map */

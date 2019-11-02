@@ -2,54 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-<<<<<<< HEAD
-    <title>BERLIN WEATER</title>
-<script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script> 
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<div class="weather-container">
-  <input type="search" name="city" placeholder="city name" id="check_city"><br>
-  <img src="" alt="" class="icon">
-  <p class="weather"></p>
-  <p class="temp"></p>
-</div>
-
-=======
     <title>World City Weather</title>
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div id="weather-container">
-    <div id="search_container"  class="item1">
-        <input type="text" id="search"  placeholder=" City Name"><br>
-        <button type="submit" id="submit">search</button>
+    <div id="weather-container">
+        <div id="search_container"  class="item1">
+            <input type="text" id="search"  placeholder=" City Name"><br>
+            <button type="submit" id="submit">search</button>
+        </div>
+        <div id="cityInfo"class="item2" >
+            <p id="city"></p>
+            <p id="country"></p>
+        </div>
+        <div id="weatherInfo" class="item3">
+            <p id="temp"></p>
+            <p id="description"></p>
+            <p id="humidity"></p>
+            <p id="temp_min"></p>
+            <p id="temp_max"></p>
+        </div>
+        <div class="item4" >
+                <img src="" alt="" id="icon"class="item" >
+                <p id="wind"></p>
+                <p id="speed"></p>
+                <p id="deg"></p>
+        </div>
     </div>
-    <div id="cityInfo"class="item2" >
-        <p id="city"></p>
-        <p id="country"></p>
-    </div>
-    <div id="weatherInfo" class="item3">
-        <p id="temp"></p>
-        <p id="description"></p>
-        <p id="humidity"></p>
-        <p id="temp_min"></p>
-        <p id="temp_max"></p>
-    </div>
-    <div class="item4" >
-            <img src="" alt="" id="icon"class="item" >
-            <p id="wind"></p>
-            <p id="speed"></p>
-            <p id="deg"></p>
+    
+    <div id="week-container">
+        <p id="week-title"></p>
+        <div id="day2">test</div>
+        <div id="day3">test</div>
+        <div id="day4">test</div>
+        <div id="day5">test</div>
+        <div id="day6">test</div>
+        <div id="day7">test</div>
 
     </div>
-</div>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
->>>>>>> 81afbb7fe2ac3bdd18c380c7c63d9610f2c9d739
 <script src="main.js"></script>
+<script src="week.js"></script>
 </body>
 </html>

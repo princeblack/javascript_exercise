@@ -1,14 +1,19 @@
 let search = document.getElementById("search");
 const submit = document.getElementById("submit");
+const apiId="7db45b5a58a7c1597b2bbae96008d4ad";
 let city = "";
-let url=`http://api.openweathermap.org/data/2.5/weather?q=Berlin&APPID=7db45b5a58a7c1597b2bbae96008d4ad&units=metric`;
+let url=`http://api.openweathermap.org/data/2.5/weather?q=Berlin&APPID=${apiId}&units=metric`;
 
 //  submit the city name
 submit.onclick = ()=>{
     if (search.value !== "" && search.value.length >1) {
         city = search.value
         url=`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=7db45b5a58a7c1597b2bbae96008d4ad&units=metric`;
+
+        weekUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
         performGetRequest()
+        getWeatherData()
+
         search.value = "";
     } else {
         alert("please fill out the city name")
@@ -26,8 +31,7 @@ const performGetRequest = async () =>{
     try {
         let getUrl = await axios.get(url)
         .then(Response =>{
-            console.log(Response.data);
-            bodyBackground(Response.data)
+            // bodyBackground(Response.data)
             weather(Response.data)
         })     
     } catch (error) {
@@ -37,49 +41,49 @@ const performGetRequest = async () =>{
 performGetRequest()
 
 //  body background 
-const bodyBackground = (data)=>{
+// const bodyBackground = (data)=>{
     
-    // array of different description of weather
-    let weaterDescr = ["mist","Smoke","Haze","sand/ dust whirls","fog","sand","dust","volcanic ash","squalls","tornado"]
+//     // array of different description of weather
+//     let weaterDescr = ["mist","Smoke","Haze","sand/ dust whirls","fog","sand","dust","volcanic ash","squalls","tornado"]
 
-    // choose the background image  based to the weather description
-    if (data.weather[0].description == "clear sky") {
-        document.body.style.background ="url('img/clear-sky.jpg')";
-        document.body.style.backgroundRepeat ="no-repeat";
-        document.body.style.backgroundSize = "cover";
-        document.body.style.backgroundPosition = "bottom";
-    }else if (data.weather[0].description.includes("cloud")) {
-        document.body.style.background ="url('img/cloud.jpg')";
-        document.body.style.backgroundRepeat ="no-repeat";
-        document.body.style.backgroundSize = "cover";
-        document.body.style.backgroundPosition = "bottom";
-    }else if (weaterDescr.includes( data.weather[0].description)) {
-        document.body.style.background ="url('img/fog.jpg')";
-        document.body.style.backgroundRepeat ="no-repeat";
-        document.body.style.backgroundSize = "cover";
-        document.body.style.backgroundPosition = "bottom";
-    }else if (data.weather[0].description.includes("snow")) {
-        document.body.style.background ="url('img/snow.jpg')";
-        document.body.style.backgroundRepeat ="no-repeat";
-        document.body.style.backgroundSize = "cover";
-        document.body.style.backgroundPosition = "bottom";
-    }else if (data.weather[0].description.includes("rain")) {
-        document.body.style.background ="url('img/rain.jpg')";
-        document.body.style.backgroundRepeat ="no-repeat";
-        document.body.style.backgroundSize = "cover";
-        document.body.style.backgroundPosition = "bottom";
-    }else if (data.weather[0].description.includes("drizzle")) {
-        document.body.style.background ="url('img/drizzle.jpeg)";
-        document.body.style.backgroundRepeat ="no-repeat";
-        document.body.style.backgroundSize = "cover";
-        document.body.style.backgroundPosition = "bottom";
-    }else if (data.weather[0].description.includes("thunderstorm")) {
-        document.body.style.background ="url('img/storm.jpg)";
-        document.body.style.backgroundRepeat ="no-repeat";
-        document.body.style.backgroundSize = "cover";
-        document.body.style.backgroundPosition = "bottom";
-    }
-}
+//     // choose the background image  based to the weather description
+//     if (data.weather[0].description == "clear sky") {
+//         document.body.style.background ="url('img/clear-sky.jpg')";
+//         document.body.style.backgroundRepeat ="no-repeat";
+//         document.body.style.backgroundSize = "cover";
+//         document.body.style.backgroundPosition = "bottom";
+//     }else if (data.weather[0].description.includes("cloud")) {
+//         document.body.style.background ="url('img/cloud.jpg')";
+//         document.body.style.backgroundRepeat ="no-repeat";
+//         document.body.style.backgroundSize = "cover";
+//         document.body.style.backgroundPosition = "bottom";
+//     }else if (weaterDescr.includes( data.weather[0].description)) {
+//         document.body.style.background ="url('img/fog.jpg')";
+//         document.body.style.backgroundRepeat ="no-repeat";
+//         document.body.style.backgroundSize = "cover";
+//         document.body.style.backgroundPosition = "bottom";
+//     }else if (data.weather[0].description.includes("snow")) {
+//         document.body.style.background ="url('img/snow.jpg')";
+//         document.body.style.backgroundRepeat ="no-repeat";
+//         document.body.style.backgroundSize = "cover";
+//         document.body.style.backgroundPosition = "bottom";
+//     }else if (data.weather[0].description.includes("rain")) {
+//         document.body.style.background ="url('img/rain.jpg')";
+//         document.body.style.backgroundRepeat ="no-repeat";
+//         document.body.style.backgroundSize = "cover";
+//         document.body.style.backgroundPosition = "bottom";
+//     }else if (data.weather[0].description.includes("drizzle")) {
+//         document.body.style.background ="url('img/drizzle.jpeg)";
+//         document.body.style.backgroundRepeat ="no-repeat";
+//         document.body.style.backgroundSize = "cover";
+//         document.body.style.backgroundPosition = "bottom";
+//     }else if (data.weather[0].description.includes("thunderstorm")) {
+//         document.body.style.background ="url('img/storm.jpg)";
+//         document.body.style.backgroundRepeat ="no-repeat";
+//         document.body.style.backgroundSize = "cover";
+//         document.body.style.backgroundPosition = "bottom";
+//     }
+// }
 
 const weather = (data)=>{
     //  weather icon image

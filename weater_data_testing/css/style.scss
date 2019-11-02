@@ -1,9 +1,9 @@
-html,
+    html,
 body{
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
+    // height: 100%;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -19,11 +19,11 @@ body{
 $pColor :aliceblue;
 #weather-container{
     width: 100%;
-    background:linear-gradient(to right,rgba(122, 160, 122, 0.796),rgba(255, 227, 201, 0.792)) ;
+    background:linear-gradient(to right,rgba(122, 160, 122, 0.796),rgb(245, 188, 135)) ;
     border: 2px solid #8186c070;
     box-sizing: border-box;
     display: grid;
-    grid-template-columns:  100 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
     .item1{
         grid-column-start:1;
         grid-column-end: 3;
@@ -41,9 +41,12 @@ $pColor :aliceblue;
         }
     }
     .item3{
-        grid-column-end: 1.5;
+        grid-column-start: 1;
+        grid-column-end: 1;
+        text-align: center;
+        margin-top: 30px;
         #temp{
-            font-size: 30px;
+            font-size: 40px;
             color: $pColor;
         }
         #description{
@@ -57,12 +60,15 @@ $pColor :aliceblue;
         }
     }
     .item4{
-        grid-column-end: 3;
+        grid-column-start: 2;
+        grid-column-end: 2;
+        text-align: left;
         #wind{
             text-decoration: underline;
-            font-size: 20px;
+            font-size: 30px;
             margin-bottom:10px;
-            color: $pColor;
+            color: linear-gradient(to right,rgba(226, 21, 21, 0.796),rgba(226, 181, 144, 0.792));
+            color:$pColor;
         }
         p{
             margin: 0;
@@ -71,16 +77,22 @@ $pColor :aliceblue;
     }
 }
 #search_container{
+    text-align: center;
     #search,#submit{
         margin: 0px;
         padding: 0px;
     }
     #search{
-        width:100%;
-        height:30px;
+        width:80%;
+        height:50px;
         border-width: 0px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        text-align: center;
     }
     #submit{
-        width: 100%;
+        width: 80%;
+        height: 30px;
     }
 }
+
