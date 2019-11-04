@@ -1,8 +1,15 @@
+let weekContainer =  document.getElementById("week-container")
+// weekContainer.style.display="none"
 let search = document.getElementById("search");
 const submit = document.getElementById("submit");
 const apiId="7db45b5a58a7c1597b2bbae96008d4ad";
 let city = "";
 let url=`http://api.openweathermap.org/data/2.5/weather?q=Berlin&APPID=${apiId}&units=metric`;
+
+/**
+ * api key and city name
+ */
+let weekUrl = `https://api.openweathermap.org/data/2.5/forecast?q=Berlin&appid=${apiId}&units=metric`;
 
 //  submit the city name
 submit.onclick = ()=>{
@@ -10,16 +17,15 @@ submit.onclick = ()=>{
         city = search.value
         url=`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=7db45b5a58a7c1597b2bbae96008d4ad&units=metric`;
 
-        weekUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+        weekUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiId}&units=metric`;
         performGetRequest()
         getWeatherData()
-
+        // weekContainer.style.display="block"
         search.value = "";
     } else {
         alert("please fill out the city name")
     }
 }
-
 search.addEventListener("keyup", function (e) {
     if (e.keyCode === 13 ) {
         submit.onclick();
@@ -40,51 +46,6 @@ const performGetRequest = async () =>{
 }
 performGetRequest()
 
-//  body background 
-// const bodyBackground = (data)=>{
-    
-//     // array of different description of weather
-//     let weaterDescr = ["mist","Smoke","Haze","sand/ dust whirls","fog","sand","dust","volcanic ash","squalls","tornado"]
-
-//     // choose the background image  based to the weather description
-//     if (data.weather[0].description == "clear sky") {
-//         document.body.style.background ="url('img/clear-sky.jpg')";
-//         document.body.style.backgroundRepeat ="no-repeat";
-//         document.body.style.backgroundSize = "cover";
-//         document.body.style.backgroundPosition = "bottom";
-//     }else if (data.weather[0].description.includes("cloud")) {
-//         document.body.style.background ="url('img/cloud.jpg')";
-//         document.body.style.backgroundRepeat ="no-repeat";
-//         document.body.style.backgroundSize = "cover";
-//         document.body.style.backgroundPosition = "bottom";
-//     }else if (weaterDescr.includes( data.weather[0].description)) {
-//         document.body.style.background ="url('img/fog.jpg')";
-//         document.body.style.backgroundRepeat ="no-repeat";
-//         document.body.style.backgroundSize = "cover";
-//         document.body.style.backgroundPosition = "bottom";
-//     }else if (data.weather[0].description.includes("snow")) {
-//         document.body.style.background ="url('img/snow.jpg')";
-//         document.body.style.backgroundRepeat ="no-repeat";
-//         document.body.style.backgroundSize = "cover";
-//         document.body.style.backgroundPosition = "bottom";
-//     }else if (data.weather[0].description.includes("rain")) {
-//         document.body.style.background ="url('img/rain.jpg')";
-//         document.body.style.backgroundRepeat ="no-repeat";
-//         document.body.style.backgroundSize = "cover";
-//         document.body.style.backgroundPosition = "bottom";
-//     }else if (data.weather[0].description.includes("drizzle")) {
-//         document.body.style.background ="url('img/drizzle.jpeg)";
-//         document.body.style.backgroundRepeat ="no-repeat";
-//         document.body.style.backgroundSize = "cover";
-//         document.body.style.backgroundPosition = "bottom";
-//     }else if (data.weather[0].description.includes("thunderstorm")) {
-//         document.body.style.background ="url('img/storm.jpg)";
-//         document.body.style.backgroundRepeat ="no-repeat";
-//         document.body.style.backgroundSize = "cover";
-//         document.body.style.backgroundPosition = "bottom";
-//     }
-// }
-
 const weather = (data)=>{
     //  weather icon image
     let icon = document.getElementById("icon");
@@ -97,8 +58,6 @@ const weather = (data)=>{
     // weather country
     let country = document.getElementById("country")
     country.innerHTML= data.sys.country;
-
-
     // weather matric
     let weater =  document.getElementById("temp");
     weater.innerHTML= Math.floor(data.main.temp) + "°c";
@@ -124,3 +83,95 @@ const weather = (data)=>{
     let deg =  document.getElementById("deg");
     deg.innerHTML= "Deg : " + data.wind.deg;
 }
+
+
+let weekTitle = document.getElementById("week-title");
+let day2 =  document.getElementById("day2");
+let day3 = document.getElementById("day3");
+let day4 = document.getElementById("day4");
+let day5 = document.getElementById("day5");
+let day6 =  document.getElementById("day6");
+let day7 = document.getElementById("day7");
+let temp2 = document.getElementById("temp2");
+let temp3 = document.getElementById("temp3");
+let temp4 = document.getElementById("temp4");
+let temp5 = document.getElementById("temp5");
+let temp6 = document.getElementById("temp6");
+let temp7 = document.getElementById("temp7");
+
+
+/**
+ * waiting for Url whit async
+ */
+getWeatherData = async () => {
+    try {
+      const res = await axios.get(weekUrl);    
+      getAvgTempWeather(res.data.list, res.data.city, res.data.list[0].weather[0]);
+    } catch (error) {
+      console.log(`${name} is very busy at the moment. Please try again later`);
+    }
+  };
+
+
+let myArray = new Array;
+
+getAvgTempWeather = (weatherData, cityData, ) => {
+    weekTitle.innerHTML=`Weekly overview for ${cityData.name}, ${cityData.country}`;
+
+  const dt = weatherData.map(el => {
+    const newEl = {
+      temp: el.main.temp,
+      date: el.dt_txt.slice(0, 10)
+    };        
+    return newEl;
+  });
+
+  dt.reduce(myReducer, {
+    cnt: 0,
+    temp: 0,
+    date: dt[0].date
+  });
+
+};
+let conteur = 0;
+printOutWeather = dt => {
+  conteur++
+  switch (conteur) {
+    case 2:
+      day2.innerHTML =`${dt.date}`
+      temp2.innerHTML =`${Math.floor(dt.temp / dt.cnt)}°C`
+    case 3:
+        day3.innerHTML =`${dt.date}`
+        temp3.innerHTML =`${Math.floor(dt.temp / dt.cnt)}°C`
+    case 4:
+        day4.innerHTML =`${dt.date}`
+        temp4.innerHTML =`${Math.floor(dt.temp / dt.cnt)}°C`
+    case 5:
+        day5.innerHTML =`${dt.date}`
+        temp5.innerHTML =`${Math.floor(dt.temp / dt.cnt)}°C` 
+    default:
+      break;
+  }   
+};    
+
+myReducer = (acc, cur, index, arr) => {
+  // I am still in the same day
+  if (cur.date === acc.date) {
+    //add this temp
+    acc.temp += cur.temp;
+    acc.cnt++;
+    if (index == arr.length - 1) printOutWeather(acc);
+  } else {
+    // A new days i born
+    printOutWeather(acc);
+    acc = {
+      cnt: 0,
+      temp: 0,
+      date: cur.date
+    };
+    myArray.push(acc)
+    
+  }
+
+  return acc;
+};

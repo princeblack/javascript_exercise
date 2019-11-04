@@ -28,13 +28,12 @@ body {
   width: 100%;
   background: -webkit-gradient(linear, left top, right top, from(rgba(122, 160, 122, 0.796)), to(#f5bc87));
   background: linear-gradient(to right, rgba(122, 160, 122, 0.796), #f5bc87);
-  border: 2px solid #8186c070;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
 }
 
 #weather-container .item1 {
@@ -65,6 +64,7 @@ body {
   grid-column-end: 1;
   text-align: center;
   margin-top: 30px;
+  margin-left: 0px;
 }
 
 #weather-container .item3 #temp {
@@ -81,26 +81,28 @@ body {
 #weather-container .item3 p {
   margin: 0;
   padding: 0;
+  font-size: 25px;
+  font-family: 'Aladin', cursive;
 }
 
 #weather-container .item4 {
   -ms-grid-column: 2;
       grid-column-start: 2;
   grid-column-end: 2;
-  text-align: left;
+  text-align: center;
 }
 
 #weather-container .item4 #wind {
-  text-decoration: underline;
   font-size: 30px;
   margin-bottom: 10px;
-  color: linear-gradient(to right, rgba(226, 21, 21, 0.796), rgba(226, 181, 144, 0.792));
   color: aliceblue;
 }
 
 #weather-container .item4 p {
   margin: 0;
   padding: 0;
+  font-size: 25px;
+  font-family: 'Aladin', cursive;
 }
 
 #search_container {
@@ -118,11 +120,43 @@ body {
   border-width: 0px;
   margin-bottom: 10px;
   margin-top: 10px;
+  font-size: 20px;
   text-align: center;
 }
 
 #search_container #submit {
   width: 80%;
-  height: 30px;
+  height: 35px;
+  margin-bottom: 20px;
+  font-size: 25px;
+  font-family: 'Mansalva', cursive;
+}
+
+#week-container {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: -webkit-gradient(linear, left top, right top, from(#f5bc87), to(rgba(122, 160, 122, 0.796)));
+  background: linear-gradient(to right, #f5bc87, rgba(122, 160, 122, 0.796));
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  text-align: center;
+}
+
+#week-container #week-title {
+  font-size: 25px;
+  text-align: center;
+  font-stretch: condensed;
+  font-family: 'Monda', sans-serif;
+  font-weight: 800;
+  color: aliceblue;
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 3;
 }
 /*# sourceMappingURL=style.css.map */
