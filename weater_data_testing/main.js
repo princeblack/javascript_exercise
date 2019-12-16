@@ -16,11 +16,9 @@ submit.onclick = ()=>{
     if (search.value !== "" && search.value.length >1) {
         city = search.value
         url=`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=7db45b5a58a7c1597b2bbae96008d4ad&units=metric`;
-
         weekUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiId}&units=metric`;
-        performGetRequest()
+        // performGetRequest()
         getWeatherData()
-        // weekContainer.style.display="block"
         search.value = "";
     } else {
         alert("please fill out the city name")
@@ -32,57 +30,56 @@ search.addEventListener("keyup", function (e) {
     }    
 })
 
-//   get data forme the api 
-const performGetRequest = async () =>{
-    try {
-        let getUrl = await axios.get(url)
-        .then(Response =>{
-            // bodyBackground(Response.data)
-            weather(Response.data)
-        })     
-    } catch (error) {
-        console.log(error);
-    }
-}
-performGetRequest()
+// //   get data forme the api 
+// const performGetRequest = async () =>{
+//     try {
+//         let getUrl = await axios.get(url)
+//         .then(Response =>{
+//             weather(Response.data)
+//         })     
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
+// performGetRequest()
 
-const weather = (data)=>{
-    //  weather icon image
-    let icon = document.getElementById("icon");
-    let iconId = data.weather[0].icon;
-    let iconUrl = `http://openweathermap.org/img/wn/${iconId}@2x.png`;
-    icon.src = iconUrl;
-    // weather city
-    let city = document.getElementById("city");
-    city.innerHTML= data.name;
-    // weather country
-    let country = document.getElementById("country")
-    country.innerHTML= data.sys.country;
-    // weather matric
-    let weater =  document.getElementById("temp");
-    weater.innerHTML= Math.floor(data.main.temp) + "°c";
-    // weather description
-    let description = document.getElementById("description");
-    description.innerHTML = data.weather[0].description;
-    // weather humidity
-    let humidity = document.getElementById("humidity");
-    humidity.innerHTML = "Humidity : "+data.main.humidity + "%";
-    // weather temp_min
-    let temp_min = document.getElementById("temp_min");
-    temp_min.innerHTML = "Temp min : " + Math.floor(data.main.temp_min)+ "°c";
-    // weather temp_max
-    let temp_max = document.getElementById("temp_max");
-    temp_max.innerHTML = "Temp max : " + Math.floor(data.main.temp_max)+ "°c";
-    // weather wind
-    let wind = document.getElementById("wind");
-    wind.innerHTML="Wind:";
-    // weather speed
-    let speed =  document.getElementById("speed");
-    speed.innerHTML = "Speed : " + data.wind.speed;
-    // weather deg
-    let deg =  document.getElementById("deg");
-    deg.innerHTML= "Deg : " + data.wind.deg;
-}
+// const weather = (data)=>{
+//     //  weather icon image
+//     let icon = document.getElementById("icon");
+//     let iconId = data.weather[0].icon;
+//     let iconUrl = `http://openweathermap.org/img/wn/${iconId}@2x.png`;
+//     icon.src = iconUrl;
+//     // weather city
+//     let city = document.getElementById("city");
+//     city.innerHTML= data.name;
+//     // weather country
+//     let country = document.getElementById("country")
+//     country.innerHTML= data.sys.country;
+//     // weather matric
+//     let weater =  document.getElementById("temp");
+//     weater.innerHTML= Math.ceil(data.main.temp) + "°c";
+//     // weather description
+//     let description = document.getElementById("description");
+//     description.innerHTML = data.weather[0].description;
+//     // weather humidity
+//     let humidity = document.getElementById("humidity");
+//     humidity.innerHTML = "Humidity : "+data.main.humidity + "%";
+//     // weather temp_min
+//     let temp_min = document.getElementById("temp_min");
+//     temp_min.innerHTML = "Temp min : " + Math.floor(data.main.temp_min)+ "°c";
+//     // weather temp_max
+//     let temp_max = document.getElementById("temp_max");
+//     temp_max.innerHTML = "Temp max : " + Math.floor(data.main.temp_max)+ "°c";
+//     // weather wind
+//     let wind = document.getElementById("wind");
+//     wind.innerHTML="Wind:";
+//     // weather speed
+//     let speed =  document.getElementById("speed");
+//     speed.innerHTML = "Speed : " + data.wind.speed;
+//     // weather deg
+//     let deg =  document.getElementById("deg");
+//     deg.innerHTML= "Deg : " + data.wind.deg;
+// }
 
 
 let weekTitle = document.getElementById("week-title");
@@ -113,11 +110,9 @@ getWeatherData = async () => {
   };
 
 
-let myArray = new Array;
 
 getAvgTempWeather = (weatherData, cityData, ) => {
-    weekTitle.innerHTML=`Weekly overview for ${cityData.name}, ${cityData.country}`;
-
+  weekTitle.innerHTML=`Weekly overview for ${cityData.name}, ${cityData.country}`;
   const dt = weatherData.map(el => {
     const newEl = {
       temp: el.main.temp,
@@ -131,26 +126,40 @@ getAvgTempWeather = (weatherData, cityData, ) => {
     temp: 0,
     date: dt[0].date
   });
-
 };
+let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+let d = new Date();
+let dayName = days[d.getDay()];
+
 let conteur = 0;
 printOutWeather = dt => {
   conteur++
   switch (conteur) {
     case 2:
-      day2.innerHTML =`${dt.date}`
+      d = new Date(dt.date);
+      dayName = days[d.getDay()]
+      day2.innerHTML =`${dayName}`
+      console.log(dt.date);
       temp2.innerHTML =`${Math.floor(dt.temp / dt.cnt)}°C`
+      d = new Date()
     case 3:
-        day3.innerHTML =`${dt.date}`
+        d = new Date(dt.date);
+        dayName = days[d.getDay()]
+        day3.innerHTML =`${dayName}`
+        console.log(dt.date);
         temp3.innerHTML =`${Math.floor(dt.temp / dt.cnt)}°C`
     case 4:
-        day4.innerHTML =`${dt.date}`
+        d = new Date(dt.date);
+        dayName = days[d.getDay()]
+        day4.innerHTML =`${dayName}`;
+        console.log(dt.date);
         temp4.innerHTML =`${Math.floor(dt.temp / dt.cnt)}°C`
     case 5:
-        day5.innerHTML =`${dt.date}`
+        d = new Date(dt.date);
+        dayName = days[d.getDay()]
+        day5.innerHTML =`${dayName}`;
+        console.log(dt.date);
         temp5.innerHTML =`${Math.floor(dt.temp / dt.cnt)}°C` 
-    default:
-      break;
   }   
 };    
 
@@ -169,9 +178,6 @@ myReducer = (acc, cur, index, arr) => {
       temp: 0,
       date: cur.date
     };
-    myArray.push(acc)
-    
   }
-
   return acc;
 };
